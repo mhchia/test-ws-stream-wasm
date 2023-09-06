@@ -1,0 +1,21 @@
+{
+  "name": "test-ws-stream-wasm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build-rs": "wasm-pack build --target web",
+    "build-and-start": "yarn build-rs && yarn install && yarn start",
+    "start": "webpack-dev-server"
+  },
+  "author": "mhchia <kevin.mh.chia@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ws-wasm": "file:./pkg"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
