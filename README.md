@@ -10,7 +10,7 @@ My environment:
 
 # Step 1: Clone the repo
 ```bash
-git clone
+git clone git@github.com:mhchia/test-ws-stream-wasm.git
 ```
 
 # Step 1: Use nightly rust
