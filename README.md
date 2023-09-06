@@ -4,7 +4,7 @@ This is a reproduction for `ws-stream-wasm` failing with nightly and rust rustfl
 
 ## Issue
 
-With the settings above, when trying to write to a websocket (`io_stream`),
+With the settings above, it fails when we try to write to a websocket (`io_stream`).
 
 ```bash
     let ws_server_url = "ws://localhost:12345";
@@ -16,8 +16,6 @@ With the settings above, when trying to write to a websocket (`io_stream`),
         .write(&message).await
         .expect_throw( "Failed to write to websocket" );
 ```
-
-it fails with the error message "Error: Failed to write to websocket".
 
 My environment:
 - OS: macOS 12.6
