@@ -13,15 +13,20 @@ My environment:
 git clone git@github.com:mhchia/test-ws-stream-wasm.git
 ```
 
-# Step 1: Use nightly rust
-Creating a file `rust-toolchain` with the content `nightly-2022-12-12` under tlsn-extension project root.
+# Step 2: Install wasm-pack
+```bash
+yarn global add wasm-pack
+```
+
+# Step 3: Use nightly rust
+Creating a file `rust-toolchain` with the content `nightly-2022-12-12` under this project root.
 ```bash
 echo "nightly-2022-12-12" > rust-toolchain
 ```
 
-## Step 2: Use rustflags `+atomics,+bulk-memory,+mutable-globals`
+## Step 4: Use rustflags `+atomics,+bulk-memory,+mutable-globals`
 
-Add a file `.cargo/config` under tlsn-extension project root with the following content, as wasm-bindgen-rayon [suggested](https://github.com/GoogleChromeLabs/wasm-bindgen-rayon#using-config-files).
+Add a file `.cargo/config` under this project root with the following content, as wasm-bindgen-rayon [suggested](https://github.com/GoogleChromeLabs/wasm-bindgen-rayon#using-config-files).
 
 ```bash
 [target.wasm32-unknown-unknown]
@@ -31,8 +36,7 @@ rustflags = ["-C", "target-feature=+atomics,+bulk-memory,+mutable-globals"]
 build-std = ["panic_abort", "std"]
 ```
 
-
-## Step 3: Start a websocket server
+## Step 5: Start a websocket server
 Open a terminal and run the following commands to start a websocket server, which prints the messages received from the client.
 
 ```bash
@@ -41,16 +45,16 @@ yarn install
 yarn start
 ```
 
-## Step 4: Build wasm and run a web server
+## Step 6: Build wasm and run a web server
 Open another terminal and run
 
 ```bash
 yarn build-and-start
 ```
 
-Open the page `http://localhost:8080` in your browser. A websocket from `ws-stream-wasm` then try sending a message to the websocket server from Step 3. It should **fail** with the following error message.
+Open the page `http://localhost:8080` in your browser. A websocket from `ws-stream-wasm` then try sending a message to the websocket server from Step 5. It should **fail** with the following error message.
 
 ![Alt text](image.png)
 
-## Step 5: Remove the file `.cargo/config` and try again
+## Step 7: Remove the file `.cargo/config` and try again
 Remove the file `.cargo/config`, run `yarn build-and-start` again, and open the page `http://localhost:8080` in your browser. It should **succeed**, and you can see `Successfully sent message to server` in your browser console.
